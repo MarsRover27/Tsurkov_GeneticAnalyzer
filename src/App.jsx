@@ -162,6 +162,8 @@ export default function App() {
         {/* FOOTER */}
         <footer className="mt-12 text-center text-gray-500 text-sm border-t border-slate-800 pt-4">
           © {new Date().getFullYear()} Tsurkov_GeneticAnalyzer. Розміщено на GitHub Pages.
+          <br>
+          <a href="https://www.flaticon.com/free-icons/dna" title="dna icons">Dna icons created by pmicon - Flaticon</a>
         </footer>
       </div>
     </div>
