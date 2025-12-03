@@ -57,7 +57,7 @@ export default function App() {
         {/* HEADER */}
         <header className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
           <div>
-            <h1 className="text-3xl md:text-4xl font-semibold text-sky-300">Генетичний тренажер</h1>
+            <h1 className="text-3xl md:text-4xl font-semibold text-sky-300">Tsurkov Genetic Analyzer</h1>
             <p className="mt-3 text-gray-300 max-w-lg">
               Інтерактивна програма для моделювання трьох законів Менделя, зчепленого успадкування і кросинговеру.
             </p>
