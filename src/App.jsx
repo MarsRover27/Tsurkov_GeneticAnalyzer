@@ -127,7 +127,7 @@ export default function App() {
             onClick={() => setModalImage('/diplom.png')}
           >
             <img src="/diplom.png" alt="diplom" className="w-48 rounded" />
-            <div className="text-gray-300">Диплом І ступеня конкурсу «Крок до знань 2024»</div>
+            <div className="text-gray-300">Диплом І ступеня конкурсу «Крок до знань 2025»</div>
           </div>
         </section>
 
@@ -150,7 +150,7 @@ export default function App() {
             <p className="text-gray-300 mt-1 max-w-md">
               На момент листопада 2025 року, учень 10-го класу ХФМНЛ №27.
               Розробник програми. 
-              Переможець конкурсу «Крок до знань 2024». 
+              Переможець конкурсу «Крок до знань 2025». 
             </p>
             <div className="mt-2 text-sm text-gray-400 space-y-1">
               <div>Email: <a href="mailto:andrey.tsurkov33@gmail.com" className="text-sky-400">andrey.tsurkov33@gmail.com</a></div>
