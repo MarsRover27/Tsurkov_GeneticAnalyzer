@@ -49,7 +49,7 @@ export default function App() {
             <h1 className="text-3xl md:text-4xl font-semibold text-sky-300">Tsurkov Genetic Analyzer</h1>
             <p className="mt-3 text-gray-300 max-w-lg">
               Інтерактивна програма для моделювання менделівської генетики, зчепленого успадкування і кросинговеру.
-              Створено для конкурсу «Крок до знань 2024».
+              Створено під час конкурсу «Крок до знань 2025».
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <button
@@ -110,7 +110,7 @@ export default function App() {
           <h2 className="text-xl text-sky-200 font-semibold">Диплом</h2>
           <div className="mt-4 bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col sm:flex-row items-center gap-4">
             <img src="/diplom.png" alt="diplom" className="w-48 rounded" />
-            <div className="text-gray-300">Диплом І ступеня конкурсу «Крок до знань 2024»</div>
+            <div className="text-gray-300">Диплом І ступеня конкурсу «Крок до знань 2025»</div>
           </div>
         </section>
 
@@ -131,7 +131,7 @@ export default function App() {
           <div>
             <div className="text-sky-200 font-semibold">Андрій Цурков</div>
             <p className="text-gray-300 mt-1 max-w-md">
-              Школяр старших класів, автор програми. Переможець конкурсу «Крок до знань 2024». 
+              Учень 10-го класу ХФМНЛ №27, автор програми. Переможець конкурсу «Крок до знань 2025». 
               Поєднує інтереси у біології та програмуванні.
             </p>
             <div className="mt-2 text-sm text-gray-400 space-y-1">
