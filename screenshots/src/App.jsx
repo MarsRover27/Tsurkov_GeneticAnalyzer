@@ -143,7 +143,7 @@ export default function App() {
 
         {/* FOOTER */}
         <footer className="mt-12 text-center text-gray-500 text-sm border-t border-slate-800 pt-4">
-          © {new Date().getFullYear()} Андрій Цурков — Генетичний тренажер. Розміщено на GitHub Pages.
+          © {new Date().getFullYear()} Андрій Цурков — Tsurkov GeneticAnalyzer. Розміщено на GitHub Pages.
         </footer>
       </div>
     </div>
