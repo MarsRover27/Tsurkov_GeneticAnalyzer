@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from 'react'
 
-/*
-  Single-page React site (dark minimalist) for GitHub Pages.
-  Configuration:
-    github_owner: MarsRover27
-    github_repo: Tsurkov_GeneticAnalyzer
-    asset_name: TsurkovGeneticAnalyzer_Installer.exe
-    YOUTUBE_ID: pDZemBxV1cI
-    Contacts: email and telegram below
-*/
-
 const OWNER = 'MarsRover27'
 const REPO = 'Tsurkov_GeneticAnalyzer'
 const ASSET = 'TsurkovGeneticAnalyzer_Installer.exe'
@@ -17,8 +7,8 @@ const YOUTUBE_ID = 'pDZemBxV1cI'
 
 export default function App() {
   const [count, setCount] = useState('…')
+  const [modalImage, setModalImage] = useState(null)
 
-  // fetch download count from GitHub Releases API
   useEffect(() => {
     async function fetchDownloads() {
       try {
@@ -40,16 +30,39 @@ export default function App() {
     window.open(`https://github.com/${OWNER}/${REPO}/releases/latest/download/${ASSET}`, '_blank')
   }
 
+  // базовий шлях для GitHub Pages
+  const base = import.meta.env.BASE_URL || '/'
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 font-sans antialiased">
+      {/* MODAL */}
+      {modalImage && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setModalImage(null)}
+        >
+          <img
+            src={modalImage}
+            alt="modal"
+            className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          />
+          <button
+            onClick={() => setModalImage(null)}
+            className="absolute top-5 right-5 text-white text-3xl font-bold hover:text-sky-300"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       <div className="max-w-5xl mx-auto px-6 py-10">
         {/* HEADER */}
         <header className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-semibold text-sky-300">Tsurkov Genetic Analyzer</h1>
             <p className="mt-3 text-gray-300 max-w-lg">
-              Інтерактивна програма для моделювання менделівської генетики, зчепленого успадкування і кросинговеру.
-              Створено під час конкурсу «Крок до знань 2025».
+              Інтерактивна навчальна програма для вивчення генетики
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <button
@@ -67,7 +80,7 @@ export default function App() {
             </div>
           </div>
           <div className="w-36 h-36 bg-slate-800 rounded-2xl flex items-center justify-center text-5xl">
-            <img src="/icon.ico" alt="icon" className="w-20 h-20" />
+            <img src={`${base}icon.ico`} alt="icon" className="w-20 h-20" />
           </div>
         </header>
 
@@ -75,8 +88,7 @@ export default function App() {
         <section className="mt-12">
           <h2 className="text-xl text-sky-200 font-semibold">Про програму</h2>
           <p className="mt-3 text-gray-300 leading-relaxed">
-            Програма моделює моногібридні та полігібридні схрещування, показує закономірності успадкування, кросинговер та зчепленість. 
-            Візуалізує генотипи й фенотипи, дозволяє тренуватись на прикладах і експортувати результати.
+            Інтерактивна програма для вивчення шкільної генетики: моделює схрещування, кросинговер, групи крові, аналіз родоводів та популяційну генетику за Харді–Вайнбергом. Містить вбудований теоретичний довідник, симулятор каріотипів при хромосомних синдромах і тест на визначення типу успадкування. Підтримує темну та світлу теми.
           </p>
         </section>
 
@@ -85,8 +97,12 @@ export default function App() {
           <h2 className="text-xl text-sky-200 font-semibold">Скріншоти</h2>
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[1, 2, 3].map(i => (
-              <div key={i} className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
-                <img src={`/screenshots/${i}.png`} alt={`screenshot ${i}`} className="w-full h-48 object-cover" />
+              <div
+                key={i}
+                className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 cursor-pointer hover:scale-[1.02] transition-transform"
+                onClick={() => setModalImage(`${base}screenshots/${i}.png`)}
+              >
+                <img src={`${base}screenshots/${i}.png`} alt={`screenshot ${i}`} className="w-full h-48 object-cover" />
               </div>
             ))}
           </div>
@@ -94,7 +110,7 @@ export default function App() {
 
         {/* VIDEO */}
         <section className="mt-10">
-          <h2 className="text-xl text-sky-200 font-semibold">Демонстрація (захист)</h2>
+          <h2 className="text-xl text-sky-200 font-semibold">Демонстрація першої версії (захист Крок до знань 2025)</h2>
           <div className="mt-4 aspect-video bg-black rounded overflow-hidden">
             <iframe
               className="w-full h-full"
@@ -108,16 +124,19 @@ export default function App() {
         {/* DIPLOM */}
         <section className="mt-10">
           <h2 className="text-xl text-sky-200 font-semibold">Диплом</h2>
-          <div className="mt-4 bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col sm:flex-row items-center gap-4">
-            <img src="/diplom.png" alt="diplom" className="w-48 rounded" />
-            <div className="text-gray-300">Диплом І ступеня конкурсу «Крок до знань 2025»</div>
+          <div
+            className="mt-4 bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col sm:flex-row items-center gap-4 cursor-pointer hover:scale-[1.02] transition-transform"
+            onClick={() => setModalImage(`${base}diplom.png`)}
+          >
+            <img src={`${base}diplom.png`} alt="diplom" className="w-48 rounded" />
+            <div className="text-gray-300">Диплом І ступеня конкурсу «Крок до знань 2025»</div>
           </div>
         </section>
 
         {/* WEB VERSION */}
         <section className="mt-10">
           <h2 className="text-xl text-sky-200 font-semibold">Онлайн версія</h2>
-          <p className="mt-3 text-gray-300">Планується Web-демо з базовим функціоналом PyQt6-програми.</p>
+          <p className="mt-3 text-gray-300">Планується Web-демо з базовим функціоналом основної програми для ОС Windows.</p>
           <div className="mt-3">
             <a href="#" className="inline-block px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700">
               Відкрити онлайн-версію (заглушка)
@@ -127,12 +146,13 @@ export default function App() {
 
         {/* AUTHOR */}
         <section className="mt-12 border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center gap-6">
-          <img src="/photo.png" alt="author" className="w-28 h-28 rounded-full object-cover bg-slate-800" />
+          <img src={`${base}photo.png`} alt="author" className="w-28 h-28 rounded-full object-cover bg-slate-800" />
           <div>
-            <div className="text-sky-200 font-semibold">Андрій Цурков</div>
+            <div className="text-sky-200 font-semibold">Цурков Андрій Андрійович</div>
             <p className="text-gray-300 mt-1 max-w-md">
-              Учень 10-го класу ХФМНЛ №27, автор програми. Переможець конкурсу «Крок до знань 2025». 
-              Поєднує інтереси у біології та програмуванні.
+              На момент квітня 2026 року, учень 10-го класу ХФМНЛ №27.
+              Розробник програми.
+              Переможець конкурсу «Крок до знань 2025».
             </p>
             <div className="mt-2 text-sm text-gray-400 space-y-1">
               <div>Email: <a href="mailto:andrey.tsurkov33@gmail.com" className="text-sky-400">andrey.tsurkov33@gmail.com</a></div>
@@ -143,7 +163,7 @@ export default function App() {
 
         {/* FOOTER */}
         <footer className="mt-12 text-center text-gray-500 text-sm border-t border-slate-800 pt-4">
-          © {new Date().getFullYear()} Андрій Цурков — Tsurkov GeneticAnalyzer. Розміщено на GitHub Pages.
+          © {new Date().getFullYear()} Tsurkov_GeneticAnalyzer. Розміщено на GitHub Pages.
         </footer>
       </div>
     </div>
