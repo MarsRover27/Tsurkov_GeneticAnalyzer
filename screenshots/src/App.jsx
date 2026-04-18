@@ -10,6 +10,7 @@ export default function App() {
   const [modalImage, setModalImage] = useState(null)
 
   useEffect(() => {
+    document.title = "Tsurkov Genetic Analyzer";
     async function fetchDownloads() {
       try {
         const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`)
